@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="json-simple-1.1.1(1)">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Documents/json-simple-1.1.1(1).jar!/" />
+      <root url="jar://$USER_HOME$/Documents/sqlite-jdbc-3.8.11.2(1).jar!/" />
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Documents/sqlite-jdbc-3.8.11.2(1).jar!/" />
+      <root url="file://$PROJECT_DIR$/src" />
+    </SOURCES>
+  </library>
+</component>
