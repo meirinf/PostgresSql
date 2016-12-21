@@ -14,6 +14,7 @@ public class insertSQLite {
 
             Class.forName("org.postgresql.Driver");
             c = DriverManager.getConnection("jdbc:postgresql://172.31.73.191:5432/themovie","postgres","root");
+
             String sql = "INSERT INTO FILMS (ID,NAME, FECHA_ESTRENO) " +
                     "VALUES (?,?,?);";
 
