@@ -18,7 +18,7 @@ public class createSQLite {
                 String sql = "CREATE TABLE FILMS " +
                         "(ID INT PRIMARY KEY     NOT NULL," +
                         " NAME           TEXT    NOT NULL, " +
-                        " FECHA_ESTRENO  DATE     NOT NULL) ";
+                        " FECHA_ESTRENO  TEXT     NOT NULL) ";
 
                 String sqlActor = "CREATE TABLE ACTORES" +
                         "(ID_ACTOR INT PRIMARY KEY    NOT NULL," +

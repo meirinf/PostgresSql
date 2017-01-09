@@ -2,10 +2,12 @@
 import java.sql.*;
 import java.util.Scanner;
 
+
 /**
  * Created by dremon on 09/11/15.
  */
 public class selectSQLite {
+
 
     public static void main( String args[] )
     {
@@ -55,7 +57,7 @@ public class selectSQLite {
                 //Recogemos los datos de la base de datos con el tag
                 int id = rs.getInt("id");
                 String  name = rs.getString("name");
-                int fecha_estreno  = rs.getInt("FECHA_ESTRENO");
+                Date fecha_estreno  = rs.getDate("FECHA_ESTRENO");
                 //Imprimimos
                 System.out.println( "ID = " + id );
                 System.out.println( "NAME = " + name );
@@ -78,8 +80,8 @@ public class selectSQLite {
         Connection conn = null;
         Statement stmt = null;
         try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:movie.db");
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection("jdbc:postgresql://172.31.73.191:5432/themovie","postgres","root");
             conn.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -112,8 +114,8 @@ public class selectSQLite {
         Connection c = null;
         Statement stmt = null;
         try {
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:movie.db");
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://172.31.73.191:5432/themovie","postgres","root");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -169,8 +171,8 @@ public class selectSQLite {
         Connection c = null;
         Statement stmt = null;
         try {
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:movie.db");
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://172.31.73.191:5432/themovie","postgres","root");
             c.setAutoCommit(false);
             System.out.println("Opened database successfully");
 
@@ -215,5 +217,6 @@ public class selectSQLite {
         }
     }
 }
+
 
 

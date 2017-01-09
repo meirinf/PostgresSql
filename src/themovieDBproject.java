@@ -9,6 +9,7 @@ import org.json.simple.parser.JSONParser;
 import javax.xml.transform.Transformer;
 import java.io.*;
 import java.net.*;
+import java.sql.Date;
 
 public class themovieDBproject {
     public static String getHTML(String urlToRead) throws Exception {
@@ -31,11 +32,10 @@ public class themovieDBproject {
         String api_key = "5e9707dca1d918600724188d7bcdb593";
 
         for (int i = 0; i < 10 ; i++) {
-            int peli = 500 +i;
+            int peli = 700 +i;
             String film = String.valueOf(peli);
             String peticio = "https://api.themoviedb.org/3/movie/"+film+"?api_key="+api_key;
             String personaje_peticion ="https://api.themoviedb.org/3/movie/"+film+"/credits?api_key="+api_key;
-            // actorPeticion ACTORES https://api.themoviedb.org/3/person/{person_id}?api_key=<<api_key>>&language=en-US
             try {
                 s = getHTML(peticio);
                 SJS(s);
@@ -89,7 +89,7 @@ public class themovieDBproject {
         // Films
         int ID = Integer.parseInt(String.valueOf(arra02.get("id")));
         String NAME =  String.valueOf(arra02.get("original_title"));
-        String FECHA_ESTRENO= String.valueOf(arra02.get("release_date"));
+        Date FECHA_ESTRENO= Date.valueOf(arra02.get("release_date").toString());
 
         System.out.println("ID :"+ID);
         System.out.println("Titul original :"+NAME);
@@ -97,10 +97,6 @@ public class themovieDBproject {
         System.out.println();
 
         insertSQLite.insertFilms(ID,NAME,FECHA_ESTRENO);
-
-    }
-
-    public static void SJC (String cadena){
 
     }
 

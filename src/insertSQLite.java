@@ -2,13 +2,11 @@
  * Created by dremon on 09/11/15.
  */
 
-    import com.sun.xml.internal.bind.v2.model.core.ID;
-
     import java.sql.*;
 
 public class insertSQLite {
 
-    public static void insertFilms(int ID ,String NAME ,String FECHA_ESTRENO) {
+    public static void insertFilms(int ID ,String NAME ,Date FECHA_ESTRENO) {
         Connection c = null;
         try {
 
@@ -21,7 +19,7 @@ public class insertSQLite {
             PreparedStatement preparedStatement = c.prepareStatement(sql);
             preparedStatement.setInt(1 , ID);
             preparedStatement.setString(2 , NAME);
-            preparedStatement.setString(3 , FECHA_ESTRENO);
+            preparedStatement.setDate(3 , FECHA_ESTRENO);
 
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -38,8 +36,8 @@ public class insertSQLite {
         Connection c = null;
         try {
 
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:movie.db");
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://172.31.73.191:5432/themovie","postgres","root");
 
             String sql = "INSERT INTO ACTORES(ID_ACTOR,Nombre_Actor) " +
                     "VALUES (?,?);";
@@ -63,8 +61,8 @@ public class insertSQLite {
         Connection c = null;
         try {
 
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:movie.db");
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://172.31.73.191:5432/themovie","postgres","root");
 
             String sql = "INSERT INTO PERS VALUES (?,?,?,?);";
 
