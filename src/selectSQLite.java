@@ -8,36 +8,47 @@ import java.util.Scanner;
  */
 public class selectSQLite {
 
-
+//Este es el gestor en si de la base de datos
     public static void main( String args[] )
     {
-
         Scanner scr = new Scanner(System.in);
-        System.out.println("elige el numero del opcion que quieres : ");
-        System.out.println("1) mostrar las peliculas . ");
-        System.out.println("2) mostrar los actores . ");
-        System.out.println("3) mostrar los actores de una pelicula . ");
-        System.out.println("4) mostrar las peliculas de un actor . ");
+        int opcion = 0;
+        while(opcion != 6){
+            //Try catch para evitar que el programa termine si hay un error
+            try{
 
-        System.out.println("5) Exit");
-        int opcion = scr.nextInt();
-        switch (opcion) {
-            case 1:
-                sacar_peliculas();
-                break;
-            case 2:
-                sacar_actores();
-                break;
-            case 3:
-                relacion_pelicula();
-                break;
-            case 4:
-                relacion_actor();
-                break;
-            default:
-                break;
+                System.out.println("--------------------------------------------");
+                System.out.println("Elige el numero del opcion que quieres : ");
+                System.out.println("1) mostrar las peliculas . ");
+                System.out.println("2) mostrar los actores . ");
+                System.out.println("3) mostrar los actores de una pelicula . ");
+                System.out.println("4) mostrar las peliculas de un actor . ");
+                System.out.println("5) Borrar datos de la base de datos. ");
+                System.out.println("6) Exit");
+                System.out.println("---------------------------------------");
+                opcion = scr.nextInt();
+                switch (opcion) {
+                    case 1:
+                        sacar_peliculas();
+                        break;
+                    case 2:
+                        sacar_actores();
+                        break;
+                    case 3:
+                        relacion_pelicula();
+                        break;
+                    case 4:
+                        relacion_actor();
+                        break;
+                    default:
+                        break;
+                }
+                System.out.println("Operacion realizada con exito");
+            }catch(Exception e){
+                System.out.println("Uoop! Error!");
+            }
         }
-        System.out.println("Exit");
+
     }
 
     //Este metodo saca todas las peliculas
@@ -129,7 +140,11 @@ public class selectSQLite {
                 System.out.println( "La pelicla : " + nom + " tiene la ID : " + id );
                 System.out.println();
             }
+            System.out.println("");
+            System.out.println("-------------------------------");
             System.out.println("Escribe la id DE PELICULA : ");
+            System.out.println("-------------------------------");
+            System.out.println("");
             Scanner scr = new Scanner(System.in);
             int ID = scr.nextInt();
 
@@ -187,7 +202,10 @@ public class selectSQLite {
                 System.out.println( "El actor/a : " + nom + " tiene la ID : " + id );
                 System.out.println();
             }
+            System.out.println("-----------------------------------------------------------");
             System.out.println("Escribe la id del actor que quieres mostrar sus peliculas :");
+            System.out.println("-----------------------------------------------------------");
+            System.out.println("");
             Scanner scr = new Scanner(System.in);
             int idacr = scr.nextInt();
 
