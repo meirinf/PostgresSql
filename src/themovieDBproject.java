@@ -39,8 +39,8 @@ public class themovieDBproject {
         String j = "";
         String api_key = "5e9707dca1d918600724188d7bcdb593";//Key de la Api
 
-        for (int i = 0; i < 10 ; i++) {
-            int peli = 700 +i;
+        for (int i = 0; i < 20 ; i++) {
+            int peli = 800 +i;
             String film = String.valueOf(peli);
             String peticio = "https://api.themoviedb.org/3/movie/"+film+"?api_key="+api_key;//dirección de peticion de peliculas
             String personaje_peticion ="https://api.themoviedb.org/3/movie/"+film+"/credits?api_key="+api_key;//actores y personajes

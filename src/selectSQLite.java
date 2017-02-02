@@ -1,6 +1,7 @@
 
 import java.sql.*;
-import java.util.Scanner;
+import java.sql.Date;
+import java.util.*;
 
 
 /**
@@ -8,9 +9,9 @@ import java.util.Scanner;
  */
 public class selectSQLite {
 
+
 //Este es el gestor en si de la base de datos
-    public static void main( String args[] )
-    {
+    public static void main( String args[] ) {
         Scanner scr = new Scanner(System.in);
         int opcion = 0;
         while(opcion != 6){
@@ -23,7 +24,7 @@ public class selectSQLite {
                 System.out.println("2) mostrar los actores . ");
                 System.out.println("3) mostrar los actores de una pelicula . ");
                 System.out.println("4) mostrar las peliculas de un actor . ");
-                System.out.println("5) Borrar datos de la base de datos. ");
+                System.out.println("5) Insertar pelicula en la base de datos ");
                 System.out.println("6) Exit");
                 System.out.println("---------------------------------------");
                 opcion = scr.nextInt();
@@ -39,6 +40,9 @@ public class selectSQLite {
                         break;
                     case 4:
                         relacion_actor();
+                        break;
+                    case 5:
+                        CrearPelicula();
                         break;
                     default:
                         break;
@@ -233,6 +237,47 @@ public class selectSQLite {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             System.exit(0);
         }
+    }
+    public static void CrearPelicula(){
+        Scanner teclat = new Scanner(System.in);
+        Connection c = null;
+        int ID;
+        String NAME;
+        Date FECHA_ESTRENO;
+
+        System.out.println("Introduce la id de pelicula");
+        ID = teclat.nextInt();
+        System.out.println("Introduce el nombre de la pelicula");
+        NAME = teclat.nextLine();
+        System.out.println("Introduce la fecha de estreno");
+        FECHA_ESTRENO = new Date(11/11/11);
+
+
+
+        try {
+
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection("jdbc:postgresql://172.31.73.191:5432/themovie","postgres","root");
+
+            //Este es el clasico insert asignamos en que valores queremos meter los datos
+            String sql = "INSERT INTO FILMS (ID,NAME, FECHA_ESTRENO) " +
+                    "VALUES (?,?,?);";
+
+            //Metemos los datos recogidos en themovieDBproject pasando las variables
+            PreparedStatement preparedStatement = c.prepareStatement(sql);
+            preparedStatement.setInt(1 , ID);
+            preparedStatement.setString(2 , NAME);
+            preparedStatement.setDate(3 , FECHA_ESTRENO);
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            c.close();
+
+        }catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Records created successfully");
     }
 }
 
